@@ -1,0 +1,14 @@
+section > ul > li{
+    margin:0 0 10px 0;   
+}
+
+del {
+	text-decoration:none; 
+	color: #008cff;
+}
+
+.center{
+	float:left;
+	margin-right: 15px;
+	width: 50%;
+}
