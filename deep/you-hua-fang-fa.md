@@ -17,25 +17,27 @@
 
 - 常用的损失函数有哪些？
 
-    <img src="https://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/pngPic/c4/classificationlosses.png" class="center">
+    <div class="wrap">
+        <img src="https://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/pngPic/c4/classificationlosses.png">
 
-    <img src="https://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/pngPic/c4/regressionlosses.png" class="center">
+        对于分类问题有：log loss: $\log(1+\exp(-f\cdot y))$, focal loss, kl divergence entropy loss: $-\log((1+f\cdot y)/2)$, exponential loss 和 hinge loss: $\max(0, 1-f\cdot y)$
+    </div>
 
-    - 对于分类问题有：`log loss`$\log(1+\exp(-f\cdot y))$, `focal loss`, `kl divergence entropy loss`$-\log((1+f\cdot y)/2)$, `exponential loss` 和 `hinge loss`$\max(0, 1-f\cdot y)$
-
-    <br><br><br><br>
+    <div class="wrap">
+        <img src="https://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/pngPic/c4/regressionlosses.png">
+        
+        对于回归问题有：mse: $(f-y)^2$, mean absolute error: $|f-y|$, huber loss在$|f-y|$小的地方用MSE，在$|f-y|>\delta$的地方，用对异常值不那么敏感的$l_1$loss: $2\delta|f-y|-\delta^2$
+    </div>
     
-    - 对于回归问题有：`mse`$(f-y)^2$, `mean absolute error`$|f-y|$, `huber loss`在$|f-y|$小的地方用MSE，在$|f-y|>\delta$的地方，用对异常值不那么敏感的$l_1$loss: $2\delta|f-y|-\delta^2$
-
-<br><br><br><br><br>
-
 - 梯度下降法和牛顿法（拟牛顿法暂略）
     - 批量梯度下降`batch gradient descent`使用所有样本，`stochastic gradient descent`随机选择一个样本求梯度，`mini-batch gradient descent`是前两者的折中，可以调整
     - 牛顿法可以求方程的根，根据泰勒近似，$$f(x_{n+1}) = f(x_n) + f'(x_n)(x_{n+1} - x_n)$$因为我们希望找到一阶梯度为$0$的参数值：$w' = w - \nabla_wf(w)(\text{Hess}_w)^{-1}$ (当学习率为1，梯度下降的公式是$w' = w - \nabla_wf(w)$)
 
-    <img src="/images/newton-method.jpg" class="center">
+    <div class="wrap">
+        <img src="/images/newton-method.jpg" class="center">
 
-    牛顿法：不是朝梯度下降最快的方向更新，而是更进一步考虑到了梯度的变化，收敛也是局部的，并且要求可逆的二阶矩阵正定，否则可能朝梯度增大方向更新
+        牛顿法：不是朝梯度下降最快的方向更新，而是更进一步考虑到了梯度的变化，收敛也是局部的，并且要求可逆的二阶矩阵正定，否则可能朝梯度增大方向更新
+    </div>
 
 - 什么是生成模型什么是判别模型？
     - ~~判别模型是在给出一个手写数字的部分图片信息下，判断这个数字是$0-9$的概率~~
@@ -44,6 +46,7 @@
     <img src="/images/GAN.jpg" class="center">
 
     生成模型：~~蓝色虚线~~代表判别器分类标准，~~黑色虚线~~代表真实样本分布情况，~~绿色实线~~代表生成样本的分布，$Z$代表随机噪音向量，是生成器的输入
+
 
 - $l_1$和$l_2$正则分别有什么特点？为何$l_1$稀疏？
     - `p-norm`: $\\| x\\|_p = \left(\sum_i^n |x_i|^p\right)^{\frac{1}{p}}$

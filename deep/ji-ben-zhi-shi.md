@@ -46,7 +46,9 @@
 ## 深度学习基础
 
 - `relu`激活层，`MSE`作为损失函数推导反向传播
-    ![](forward-backward.jpg)
+
+    <img src="\images\forward-backward.jpg">
+    
     先通过前向传播把每个值算出来，再通过反向传播计算每一个神经元的梯度：比如最后一个神经元梯度是1.00, 倒数第二个是$\partial \frac{1}{x} |_{x=1.37}\times 1.00 = -0.53$，记住加法分配，乘法加法，最大值继承等
     > 相关见[这个例子](https://blog.csdn.net/u014313009/article/details/51039334)和[这个](https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/comment-page-1/)
 - `dropout`如何实现反向传播的
