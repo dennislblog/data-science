@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>基本知识 · GitBook</title>
+        <title>未归类 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="wei-gui-lei.html" />
+    <link rel="next" href="guan-lian-cha-xun.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="ji-ben-zhi-shi.html" />
     
 
     </head>
@@ -286,7 +286,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="ji-ben-zhi-shi.html">
+        <li class="chapter " data-level="1.4.1" data-path="ji-ben-zhi-shi.html">
             
                 <a href="ji-ben-zhi-shi.html">
             
@@ -299,7 +299,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="wei-gui-lei.html">
+        <li class="chapter active" data-level="1.4.2" data-path="wei-gui-lei.html">
             
                 <a href="wei-gui-lei.html">
             
@@ -373,7 +373,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >基本知识</a>
+        <a href=".." >未归类</a>
     </h1>
 </div>
 
@@ -388,32 +388,81 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x57FA;&#x672C;&#x77E5;&#x8BC6;">&#x57FA;&#x672C;&#x77E5;&#x8BC6;</h1>
-<h3 id="&#x6570;&#x636E;&#x5E93;&#x4E09;&#x5927;&#x8303;&#x5F0F;">&#x6570;&#x636E;&#x5E93;&#x4E09;&#x5927;&#x8303;&#x5F0F;</h3>
-<ol>
-<li><p>&#x7B2C;&#x4E00;&#x8303;&#x5F0F;&#xFF1A;&#x8981;&#x6C42;&#x5C5E;&#x6027;&#x5177;&#x6709;&#x539F;&#x5B50;&#x6027;&#xFF0C;&#x4E0D;&#x53EF;&#x4EE5;&#x518D;&#x88AB;&#x62C6;&#x5206;</p>
+                                <h1 id="&#x672A;&#x5F52;&#x7C7B;">&#x672A;&#x5F52;&#x7C7B;</h1>
+<h2 id="&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x8868;">&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x8868;</h2>
+<pre><code class="lang-sql"><span class="hljs-comment">--&#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x8FDE;&#x63A5;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5E93;&#x91CC;</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> temp_table(<span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span>, grade <span class="hljs-built_in">decimal</span>(<span class="hljs-number">4</span>,<span class="hljs-number">2</span>));
+<span class="hljs-comment">--&#x8F93;&#x5165;(id, grade)&#x6570;&#x636E;</span>
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> temp_table <span class="hljs-keyword">values</span> (<span class="hljs-number">1</span>,<span class="hljs-number">78</span>), (<span class="hljs-number">2</span>,<span class="hljs-number">80.5</span>), (<span class="hljs-number">3</span>,<span class="hljs-number">95</span>), (<span class="hljs-number">4</span>,<span class="hljs-number">47</span>), (<span class="hljs-number">5</span>,<span class="hljs-number">66</span>), (<span class="hljs-number">6</span>,<span class="hljs-literal">null</span>);
+<span class="hljs-comment">--&#x63D2;&#x5165;&#x65B0;&#x7684;&#x4E00;&#x5217;`time`&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#xFF08;&#x7528;now()&#x51FD;&#x6570;, set one value to all&#xFF09;</span>
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> temp_table <span class="hljs-keyword">add</span> <span class="hljs-keyword">column</span> timenow datetime;
+<span class="hljs-keyword">update</span> temp_table <span class="hljs-keyword">set</span> timenow=<span class="hljs-keyword">now</span>(); 
+<span class="hljs-comment">--&#x5220;&#x9664;column&#x64CD;&#x4F5C;: alter table temp_table drop column timenow;</span>
+<span class="hljs-comment">--&#x63CF;&#x8FF0;table&#x64CD;&#x4F5C;: describe temp_table;</span>
+
+<span class="hljs-comment">--&#x521B;&#x9020;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x7684;table&#x5B58;&#x50A8;&#x8981;&#x63D2;&#x5165;&#x7684;&#x53D8;&#x91CF;</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">temporary</span> <span class="hljs-keyword">table</span> tmp (<span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span>, user_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">30</span>));
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> tmp <span class="hljs-keyword">values</span> (<span class="hljs-number">1</span>, <span class="hljs-string">&quot;12bc&quot;</span>),(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;abcd&quot;</span>),(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;3456&quot;</span>),(<span class="hljs-number">4</span>, <span class="hljs-string">&quot;56cd&quot;</span>),(<span class="hljs-number">5</span>, <span class="hljs-string">&quot;00gg&quot;</span>),(<span class="hljs-number">6</span>, <span class="hljs-string">&quot;ggbc&quot;</span>);
+<span class="hljs-comment">--&#x63D2;&#x5165;&#x65B0;&#x7684;&#x4E00;&#x5217;`user_name`</span>
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> temp_table <span class="hljs-keyword">add</span> user_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">30</span>) <span class="hljs-keyword">default</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">after</span> <span class="hljs-keyword">id</span>;
+<span class="hljs-comment">--&#x9009;&#x53D6;&#x4E34;&#x65F6;&#x8868;tmp&#x4E2D;&#x7684;user_name&#x63D2;&#x5165;&#x5230;temp_table&#x91CC;(&#x5339;&#x914D;id)</span>
+<span class="hljs-keyword">update</span> temp_table <span class="hljs-keyword">as</span> a, tmp <span class="hljs-keyword">as</span> b <span class="hljs-keyword">set</span> a.user_name = b.user_name <span class="hljs-keyword">where</span> a.<span class="hljs-keyword">id</span> = b.<span class="hljs-keyword">id</span>;
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;</p>
+<pre><code>+----+-----------+-------+---------------------+
+| id | user_name | grade | timenow             |
++----+-----------+-------+---------------------+
+|  1 | 12bc      | 78.00 | 2020-08-12 22:08:26 |
+|  2 | abcd      | 80.50 | 2020-08-12 22:08:26 |
+|  3 | 3456      | 95.00 | 2020-08-12 22:08:26 |
+|  4 | 56cd      | 47.00 | 2020-08-12 22:08:26 |
+|  5 | 00gg      | 66.00 | 2020-08-12 22:08:26 |
+|  6 | ggbc      |  NULL | 2020-08-12 22:08:26 |
++----+-----------+-------+---------------------+
+</code></pre><h2 id="&#x6761;&#x4EF6;&#x5224;&#x65AD;">&#x6761;&#x4EF6;&#x5224;&#x65AD;</h2>
 <blockquote>
-<p>&#x5982;&#x8868;(&#x5B66;&#x53F7;&#xFF0C;&#x59D3;&#x540D;&#xFF0C;&#x6027;&#x522B;&#xFF0C;&#x51FA;&#x751F;&#x5E74;&#x6708;&#x65E5;)&#xFF0C;&#x5982;&#x679C;&#x8BA4;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x5217;&#x8FD8;&#x53EF;&#x4EE5;&#x518D;&#x5206;&#x6210;(&#x5E74;&#xFF0C;&#x6708;&#xFF0C;&#x65E5;)&#xFF0C;&#x5C31;&#x8FDD;&#x53CD;&#x7B2C;&#x4E00;&#x8303;&#x5F0F;</p>
+<p>&#x60C5;&#x5883;&#xFF1A;&#x6839;&#x636E;&#x4E0A;&#x9762;&#x5B66;&#x751F;&#x7684;&#x6210;&#x7EE9;&#xFF0C;&#x7ED9;&#x51FA;<code>&#x4F18;</code>&#xFF0C;<code>&#x4E2D;</code>&#xFF0C;<code>&#x5DEE;</code>&#x4E09;&#x4E2A;&#x8BC4;&#x7EA7;
+```sql
+-- 1) &#x7528;if&#x5B9E;&#x73B0;
+select user_name, grade, if(grade&gt;=60, if(grade&gt;80, &apos;good&apos;, &apos;not bad&apos;), &apos;bad&apos;) as grade_judge from temp_table;</p>
 </blockquote>
-</li>
-<li><p>&#x7B2C;&#x4E8C;&#x8303;&#x5F0F;&#xFF1A;&#x975E;&#x4E3B;&#x952E;&#x5217;&#x7684;&#x6570;&#x636E;&#x63D0;&#x53D6;&#x5B8C;&#x5168;&#x4F9D;&#x8D56;&#x4E8E;&#x4E3B;&#x952E;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x90E8;&#x5206;&#x4F9D;&#x8D56;&#xFF0C;&#x8BB0;&#x5F55;&#x5177;&#x6709;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x6027;(&#x8FD9;&#x4E2A;&#x4E3B;&#x952E;&#x53EF;&#x4EE5;&#x7531;&#x591A;&#x4E2A;&#x5217;&#x51B3;&#x5B9A;)</p>
+<p>-- 2) &#x7528;case when&#x5B9E;&#x73B0;
+select user_name, grade, 
+case when grade &gt; 80 then &apos;good&apos;
+     when grade between 60 and 80 then &apos;not bad&apos;
+     else &apos;bad&apos; end as grade_judge
+from temp_table;</p>
+<pre><code>&#x7ED3;&#x679C;&#x5982;&#x4E0B;
+</code></pre><p>+-----------+-------+-------------+
+| user_name | grade | grade_judge |
++-----------+-------+-------------+
+| 12bc      | 78.00 | not bad     |
+| abcd      | 80.50 | good        |
+| 3456      | 95.00 | good        |
+| 56cd      | 47.00 | bad         |
+| 00gg      | 66.00 | not bad     |
+| ggbc      |  NULL | bad         |
++-----------+-------+-------------+</p>
+<pre><code>
+&gt; where&#x8FD0;&#x7B97;&#x7B26;(&#x5982;&#x679C;&#x6761;&#x4EF6;&#x662F;&#x4E3B;&#x952E;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x5E94;&#x8BE5;&#x4F1A;&#x5FEB;&#x4E00;&#x4E9B;)
+&gt;&gt; &#x903B;&#x8F91;&#x7B26;&#x53F7;&#x6D89;&#x53CA; `=`, `!=`, `&gt;=`, `&lt;=`, `between * and *`, `like`, `in`
+```sql
+-- select * from temp_table where grade between 60 and 80;
+-- select * from temp_table where grade in (78, 95);
+</code></pre><p><del>like&#x6A21;&#x7CCA;&#x67E5;&#x627E;</del>: % &#x8868;&#x793A;&#x5168;&#x90E8;&#x5339;&#x914D;&#xFF0C;_ &#x4E0B;&#x5212;&#x7EBF;&#x8868;&#x793A;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF1B;&#x4F8B;&#x5982;<code>look%</code>&#x4EE3;&#x8868;&#x5339;&#x914D;<code>look</code>&#x5F00;&#x5934;&#x7684;&#x4FE1;&#x606F;</p>
 <blockquote>
-<p>&#x5982;&#x8868;(&#x5B66;&#x53F7;&#xFF0C;&#x8BFE;&#x7A0B;&#x53F7;&#xFF0C;&#x59D3;&#x540D;&#xFF0C;&#x5B66;&#x5206;)&#xFF0C;&#x5B66;&#x5206;&#x4F9D;&#x8D56;&#x8BFE;&#x7A0B;&#x53F7;&#xFF0C;&#x59D3;&#x540D;&#x4F9D;&#x8D56;&#x5B66;&#x53F7;&#xFF0C;&#x90A3;&#x4E9B;&#x6CA1;&#x9009;&#x8BFE;&#x7684;&#x5B66;&#x751F;&#x6709;&#x4E24;&#x5217;&#x90FD;&#x662F;NULL&#xFF0C;&#x8FDD;&#x53CD;&#x7B2C;&#x4E8C;&#x8303;&#x5F0F;</p>
-<blockquote>
-<p>&#x6B63;&#x786E;&#x505A;&#x6CD5;&#x662F;&#x8BBE;&#x8BA1;&#x4E09;&#x4E2A;&#x8868;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x8868;<code>&#x5B66;&#x751F;</code>(&#x5B66;&#x53F7;&#xFF0C;&#x59D3;&#x540D;)&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x8868;<code>&#x8BFE;&#x7A0B;</code>(&#x8BFE;&#x7A0B;&#x53F7;&#xFF0C;&#x5B66;&#x5206;)&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x8868;<code>&#x9009;&#x8BFE;&#x5173;&#x7CFB;</code>(&#x5B66;&#x53F7;&#xFF0C;&#x8BFE;&#x7A0B;&#x53F7;&#xFF0C;&#x6210;&#x7EE9;)</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>&#x7B2C;&#x4E09;&#x8303;&#x5F0F;&#xFF1A;&#x6570;&#x636E;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5570;&#x55E6;</p>
-<blockquote>
-<p>&#x5982;&#x8868;(&#x5B66;&#x53F7;&#xFF0C;&#x59D3;&#x540D;&#xFF0C;&#x5E74;&#x9F84;&#xFF0C;&#x5B66;&#x9662;&#x540D;&#x79F0;&#xFF0C;&#x5B66;&#x9662;&#x7535;&#x8BDD;)&#xFF0C;&#x5F88;&#x591A;&#x5B66;&#x751F;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5B66;&#x9662;&#xFF0C;&#x8FD9;&#x6837;&#x5B66;&#x9662;&#x548C;&#x7535;&#x8BDD;&#x8FD9;&#x4E24;&#x680F;&#x5C31;&#x4F1A;&#x6709;&#x5927;&#x91CF;&#x4FE1;&#x606F;&#x5197;&#x4F59;</p>
-<blockquote>
-<p>&#x6B63;&#x786E;&#x505A;&#x6CD5;&#x662F;&#x8BBE;&#x8BA1;&#x4E24;&#x4E2A;&#x8868;&#xFF0C;&#x4E00;&#x4E2A;&#x5B66;&#x751F;(&#x5B66;&#x53F7;&#xFF0C;&#x59D3;&#x540D;&#xFF0C;&#x5E74;&#x9F84;&#xFF0C;&#x6240;&#x5728;&#x5B66;&#x9662;)&#xFF0C;&#x4E00;&#x4E2A;&#x5B66;&#x9662;(&#x5B66;&#x9662;&#xFF0C;&#x7535;&#x8BDD;)</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="dennisl@udel.edu">dennislblog</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</i> 2020-08-12 23:29:31 </span> </footer>
+<p>&#x60C5;&#x5883;&#xFF1A;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x8868;&#x4E2D;&#xFF0C;&#x63D0;&#x53D6;<code>user_name</code>&#x91CC;&#x5168;&#x90E8;&#x4E3A;&#x6570;&#x5B57;&#x6216;&#x5168;&#x90E8;&#x4E3A;&#x5B57;&#x6BCD;&#x7684;&#x540C;&#x5B66;&#x7684;&#x6210;&#x7EE9;&#x8BB0;&#x5F55;(&#x8C8C;&#x4F3C;&#x4E0D;&#x8BC6;&#x522B;<code>regex</code>)&#xFF0C;&#x6539;&#x6210;&#x63D0;&#x53D6;<code>user_name</code>&#x672B;&#x5C3E;&#x5B57;&#x6BCD;&#x4E3A;<code>d</code>&#x7684;&#x4FE1;&#x606F;</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> temp_table <span class="hljs-keyword">where</span> user_name <span class="hljs-keyword">like</span> <span class="hljs-string">&quot;%d&quot;</span>;
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;</p>
+<pre><code>+----+-----------+-------+---------------------+
+| id | user_name | grade | timenow             |
++----+-----------+-------+---------------------+
+|  2 | abcd      | 80.50 | 2020-08-12 22:08:26 |
+|  4 | 56cd      | 47.00 | 2020-08-12 22:08:26 |
++----+-----------+-------+---------------------+
+</code></pre></blockquote>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="dennisl@udel.edu">dennislblog</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</i> 2020-08-13 00:30:11 </span> </footer>
                                 
                                 </section>
                             
@@ -440,12 +489,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Database">
+                <a href="ji-ben-zhi-shi.html" class="navigation navigation-prev " aria-label="Previous page: 基本知识">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="wei-gui-lei.html" class="navigation navigation-next " aria-label="Next page: 未归类">
+                <a href="guan-lian-cha-xun.html" class="navigation navigation-next " aria-label="Next page: 关联查询">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -456,7 +505,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"基本知识","level":"1.4.1","depth":2,"next":{"title":"未归类","level":"1.4.2","depth":2,"path":"database/wei-gui-lei.md","ref":"database/wei-gui-lei.md","articles":[]},"previous":{"title":"Database","level":"1.4","depth":1,"path":"database/README.md","ref":"database/README.md","articles":[{"title":"基本知识","level":"1.4.1","depth":2,"path":"database/ji-ben-zhi-shi.md","ref":"database/ji-ben-zhi-shi.md","articles":[]},{"title":"未归类","level":"1.4.2","depth":2,"path":"database/wei-gui-lei.md","ref":"database/wei-gui-lei.md","articles":[]},{"title":"关联查询","level":"1.4.3","depth":2,"path":"database/guan-lian-cha-xun.md","ref":"database/guan-lian-cha-xun.md","articles":[]},{"title":"数据库优化","level":"1.4.4","depth":2,"path":"database/shu-ju-ku-you-hua.md","ref":"database/shu-ju-ku-you-hua.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["click-reveal","auto-scroll-table","splitter","mathjax-pro","hints","pageview-count","back-to-top-button","hide-element","chapter-fold","code","-lunr","-search","search-pro","page-footer-ex","scripts"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"chapter-fold":{},"page-footer-ex":{"copyright":"[dennislblog](dennisl@udel.edu)","markdown":true,"update_label":"<i>更新时间</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"splitter":{},"scripts":{"files":["./extra.js"]},"search-pro":{},"auto-scroll-table":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"back-to-top-button":{},"pageview-count":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"mathjax":{"forceSVG":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"database/ji-ben-zhi-shi.md","mtime":"2020-08-12T15:29:31.914Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-12T16:30:21.272Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"未归类","level":"1.4.2","depth":2,"next":{"title":"关联查询","level":"1.4.3","depth":2,"path":"database/guan-lian-cha-xun.md","ref":"database/guan-lian-cha-xun.md","articles":[]},"previous":{"title":"基本知识","level":"1.4.1","depth":2,"path":"database/ji-ben-zhi-shi.md","ref":"database/ji-ben-zhi-shi.md","articles":[]},"dir":"ltr"},"config":{"plugins":["click-reveal","auto-scroll-table","splitter","mathjax-pro","hints","pageview-count","back-to-top-button","hide-element","chapter-fold","code","-lunr","-search","search-pro","page-footer-ex","scripts"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"chapter-fold":{},"page-footer-ex":{"copyright":"[dennislblog](dennisl@udel.edu)","markdown":true,"update_label":"<i>更新时间</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"splitter":{},"scripts":{"files":["./extra.js"]},"search-pro":{},"auto-scroll-table":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"back-to-top-button":{},"pageview-count":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"mathjax":{"forceSVG":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"database/wei-gui-lei.md","mtime":"2020-08-12T16:30:11.536Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-12T16:30:21.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
