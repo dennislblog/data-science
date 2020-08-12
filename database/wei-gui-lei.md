@@ -38,10 +38,10 @@ update temp_table as a, tmp as b set a.user_name = b.user_name where a.id = b.id
 ## 条件判断
 
 > 情境：根据上面学生的成绩，给出`优`，`中`，`差`三个评级
+
 ```sql
 -- 1) 用if实现
 select user_name, grade, if(grade>=60, if(grade>80, 'good', 'not bad'), 'bad') as grade_judge from temp_table;
-
 -- 2) 用case when实现
 select user_name, grade, 
 case when grade > 80 then 'good'
@@ -49,6 +49,7 @@ case when grade > 80 then 'good'
      else 'bad' end as grade_judge
 from temp_table;
 ```
+
 结果如下
 ```
 +-----------+-------+-------------+
@@ -65,12 +66,16 @@ from temp_table;
 
 > where运算符(如果条件是主键，理论上应该会快一些)
 >> 逻辑符号涉及 `=`, `!=`, `>=`, `<=`, `between * and *`, `like`, `in`
+
+
 ```sql
 -- select * from temp_table where grade between 60 and 80;
 -- select * from temp_table where grade in (78, 95);
 ```
+
 ~~like模糊查找~~: % 表示全部匹配，_ 下划线表示匹配一个字符；例如`look%`代表匹配`look`开头的信息
 > 情境：在上面的表中，提取`user_name`里全部为数字或全部为字母的同学的成绩记录(貌似不识别`regex`)，改成提取`user_name`末尾字母为`d`的信息
+
 ```sql
 select * from temp_table where user_name like "%d";
 ```
