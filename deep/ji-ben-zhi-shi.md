@@ -66,13 +66,13 @@
     - 另外`batchnorm`也被用于解决梯度问题，正向传播中的$f_2 = f_1 (w^Tx + b)$在反向传播中$\partial f_2 / \partial w = (\partial f_2 / \partial f_1)\cdot x$因此这一层的输入会影响梯度的消失和爆炸。`batchnorm`通过对每一层输出规范为均值和方差一致的办法，消除了下一层输入带来的放缩影响
     - 何凯明大神提出的残差网络结构，用堆叠的神经网络去拟合一个`residual mapping` $F(x) = H(x) - x$ 这样如果残差网络梯度消失，至少`identity mapping`能保证无损地传播梯度
 
-    <img src="\images\resnet.png" class="center">
+    <div class="wrap">
+        <img src="\images\resnet.png">
 
-    <center>
-    $$\begin{align*}
-    \frac{\partial \text{loss}}{\partial x_l} &= \frac{\partial \text{loss}}{\partial x_L}\cdot \frac{\partial X_L}{\partial x_l} \cr
-    &= \frac{\partial \text{loss}}{\partial x_L}\cdot \left(1 + \frac{\partial}{\partial x_L}\sum_{i=l}^{L-1}F(x_i, W_i)\right)
-    \end{align*}$$
-    </center>
-
-    第一个因子$\partial \text{loss} / \partial x_L$代表损失函数到达$L$的梯度，然后$l \rightarrow L-1$都是`residual net`
+        $$\begin{align*}
+        \frac{\partial \text{loss}}{\partial x_l} &= \frac{\partial \text{loss}}{\partial x_L}\cdot \frac{\partial X_L}{\partial x_l} \cr
+        &= \frac{\partial \text{loss}}{\partial x_L}\cdot \left(1 + \frac{\partial}{\partial x_L}\sum_{i=l}^{L-1}F(x_i, W_i)\right)
+        \end{align*}$$
+        <br>
+        第一个因子$\partial \text{loss} / \partial x_L$代表损失函数到达$L$的梯度，然后$l \rightarrow L-1$都是 residual net
+    </div>
