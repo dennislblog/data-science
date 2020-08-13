@@ -57,6 +57,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -416,7 +420,8 @@
     <span class="hljs-comment"># 3. replace DataScience to _</span>
     <span class="hljs-keyword">return</span> r2.replace(<span class="hljs-string">&quot;DataScience&quot;</span>, <span class="hljs-string">&quot;_&quot;</span>)
 </code></pre>
-<h3 id="&#x4ECE;&#x7F51;&#x9875;&#x6293;&#x53D6;&#x8868;&#x683C;table-tag&#xFF0C;&#x7531;&#x4E8E;&#x5728;mysql&#x91CC;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x56E0;&#x6B64;&#x53BB;&#x6389;&#x4ED6;&#x3002;&#x628A;&#x6570;&#x636E;&#x8868;&#x6BCF;&#x4E00;&#x884C;&#x5B58;&#x6210;list&#xFF0C;&#x9010;&#x884C;&#x52A0;&#x5230;mysql&#x91CC;">&#x4ECE;&#x7F51;&#x9875;&#x6293;&#x53D6;&#x8868;&#x683C;<code>table tag</code>&#xFF0C;&#x7531;&#x4E8E;<code>%</code>&#x5728;MYSql&#x91CC;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x56E0;&#x6B64;&#x53BB;&#x6389;&#x4ED6;&#x3002;&#x628A;&#x6570;&#x636E;&#x8868;&#x6BCF;&#x4E00;&#x884C;&#x5B58;&#x6210;<code>list</code>&#xFF0C;&#x9010;&#x884C;&#x52A0;&#x5230;MYSql&#x91CC;</h3>
+<h3 id="&#x63D0;&#x53D6;&#x8868;&#x683C;&#x6570;&#x636E;">&#x63D0;&#x53D6;&#x8868;&#x683C;&#x6570;&#x636E;</h3>
+<p>&#x4ECE;&#x7F51;&#x9875;&#x6293;&#x53D6;&#x8868;&#x683C;<code>table tag</code>&#xFF0C;&#x7531;&#x4E8E;<code>%</code>&#x5728;MYSql&#x91CC;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x56E0;&#x6B64;&#x53BB;&#x6389;&#x4ED6;&#x3002;&#x628A;&#x6570;&#x636E;&#x8868;&#x6BCF;&#x4E00;&#x884C;&#x5B58;&#x6210;<code>list</code>&#xFF0C;&#x9010;&#x884C;&#x52A0;&#x5230;MYSql&#x91CC;</p>
 <pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_html</span><span class="hljs-params">(url)</span>:</span>
     html = urllib.request.urlopen(url)
     content = html.read()
@@ -436,7 +441,8 @@
         data_lst[name] = data
     <span class="hljs-keyword">return</span> data_lst
 </code></pre>
-<h3 id="&#x6700;&#x540E;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x628A;&#x63D0;&#x53D6;&#x7684;&#x6570;&#x636E;&#x5B58;&#x5165;&#x5230;&#x6570;&#x636E;&#x8868;&#x4E2D;">&#x6700;&#x540E;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x628A;&#x63D0;&#x53D6;&#x7684;&#x6570;&#x636E;&#x5B58;&#x5165;&#x5230;&#x6570;&#x636E;&#x8868;&#x4E2D;</h3>
+<h3 id="&#x628A;&#x6570;&#x636E;&#x5B58;&#x5165;&#x6570;&#x636E;&#x5E93;">&#x628A;&#x6570;&#x636E;&#x5B58;&#x5165;&#x6570;&#x636E;&#x5E93;</h3>
+<p>&#x6700;&#x540E;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x628A;&#x63D0;&#x53D6;&#x7684;&#x6570;&#x636E;&#x5B58;&#x5165;&#x5230;&#x6570;&#x636E;&#x8868;&#x4E2D;</p>
 <pre><code class="lang-python"><span class="hljs-comment"># &#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x8FDE;&#x63A5;&#x5230;mysql&#x6570;&#x636E;&#x5E93;&#x91CC;</span>
 url = <span class="hljs-string">&quot;https://www.kdnuggets.com/2019/09/core-hot-data-science-skills.html&quot;</span>
 data = get_html(url)
@@ -509,7 +515,7 @@ connect.close()
 <p>&#x65E0;&#x7591;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x6280;&#x80FD;&#x662F;<code>Pytorch</code>&#x8FD9;&#x4E2A;&#x6211;&#x8FD8;&#x4E0D;&#x600E;&#x4E48;&#x6709;&#x5B9E;&#x64CD;&#x7ECF;&#x9A8C;~&#x53C8;&#x4E00;&#x6B21;&#x5C34;&#x5C2C;&#xFF0C;&#x5927;&#x6570;&#x636E;&#x548C;&#x5206;&#x5E03;&#x5F0F;&#x8BA1;&#x7B97;&#x662F;&#x672A;&#x6765;&#x5927;&#x52BF;&#x6240;&#x8D8B;</p>
 <p><img src="https://www.kdnuggets.com/images/skill-want-have-scatter-720.jpg"></p>
 <p>&#x5176;&#x5B9E;&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;&#x6709;&#x4E00;&#x4E2A;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x56FE;&#x7247;&#xFF0C;&#x6BD4;&#x8FD9;&#x4E9B;&#x6570;&#x5B57;&#x7ACB;&#x4F53;&#x591A;&#x4E86;&#xFF0C;&#x53EF;&#x89C6;&#x5316;&#x6280;&#x80FD;&#x4E5F;&#x8981;&#x953B;&#x70BC;&#xFF0C;&#x6211;&#x4ED6;&#x5988;&#x8BFB;&#x4E86;&#x4E2A;&#x5565;&#x4E66;&#x5440;</p>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="dennisl@udel.edu">dennislblog</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</i> 2020-08-13 19:02:21 </span> </footer>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="dennisl@udel.edu">dennislblog</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</i> 2020-08-13 21:17:51 </span> </footer>
                                 
                                 </section>
                             
@@ -548,7 +554,7 @@ connect.close()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实际操作","level":"1.4.5","depth":2,"previous":{"title":"数据库优化","level":"1.4.4","depth":2,"path":"database/shu-ju-ku-you-hua.md","ref":"database/shu-ju-ku-you-hua.md","articles":[]},"dir":"ltr"},"config":{"plugins":["click-reveal","auto-scroll-table","splitter","mathjax-pro","hints","pageview-count","back-to-top-button","hide-element","chapter-fold","code","-lunr","-search","search-pro","page-footer-ex","scripts"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"chapter-fold":{},"page-footer-ex":{"copyright":"[dennislblog](dennisl@udel.edu)","markdown":true,"update_label":"<i>更新时间</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"splitter":{},"scripts":{"files":["./extra.js"]},"search-pro":{},"auto-scroll-table":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"back-to-top-button":{},"pageview-count":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"mathjax":{"forceSVG":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"database/shi-ji-cao-zuo.md","mtime":"2020-08-13T11:02:21.148Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T11:05:22.799Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实际操作","level":"1.4.5","depth":2,"previous":{"title":"数据库优化","level":"1.4.4","depth":2,"path":"database/shu-ju-ku-you-hua.md","ref":"database/shu-ju-ku-you-hua.md","articles":[]},"dir":"ltr"},"config":{"plugins":["click-reveal","auto-scroll-table","splitter","mathjax-pro","hints","pageview-count","back-to-top-button","hide-element","chapter-fold","code","-lunr","-search","search-pro","page-footer-ex","scripts","intopic-toc"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"chapter-fold":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"TOC in this article"},"page-footer-ex":{"copyright":"[dennislblog](dennisl@udel.edu)","markdown":true,"update_label":"<i>更新时间</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"splitter":{},"scripts":{"files":["./extra.js"]},"search-pro":{},"auto-scroll-table":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"back-to-top-button":{},"pageview-count":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"mathjax":{"forceSVG":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"database/shi-ji-cao-zuo.md","mtime":"2020-08-13T13:17:51.597Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T13:18:23.485Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -607,6 +613,18 @@ connect.close()
     
         
         <script src="../gitbook/gitbook-plugin-scripts/f5c7985a14e1b140ce83578f74f00305-extra.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
         
     
         

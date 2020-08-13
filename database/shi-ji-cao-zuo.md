@@ -17,7 +17,9 @@ def extract_title(txt):
     return r2.replace("DataScience", "_")
 ```
 
-### 从网页抓取表格`table tag`，由于`%`在MYSql里有特殊的含义，因此去掉他。把数据表每一行存成`list`，逐行加到MYSql里
+### 提取表格数据
+
+从网页抓取表格`table tag`，由于`%`在MYSql里有特殊的含义，因此去掉他。把数据表每一行存成`list`，逐行加到MYSql里
 
 ```python
 def get_html(url):
@@ -40,7 +42,9 @@ def get_html(url):
     return data_lst
 ```
 
-### 最后一步就是把提取的数据存入到数据表中
+### 把数据存入数据库
+
+最后一步就是把提取的数据存入到数据表中
 
 ```python
 # 假设你已经连接到mysql数据库里
