@@ -12,3 +12,22 @@
 3. 第三范式：数据尽量不要啰嗦
 > 如表(学号，姓名，年龄，学院名称，学院电话)，很多学生在同一个学院，这样学院和电话这两栏就会有大量信息冗余
 >> 正确做法是设计两个表，一个学生(学号，姓名，年龄，所在学院)，一个学院(学院，电话)
+
+### 存储引擎
+
+```cmd
+mysql xiang@localhost:test> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+--------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA     | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+--------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO     | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO     | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO     | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | <null>       | <null> | <null>     |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO     | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO     | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES    | YES        |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO     | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO     | NO         |
++--------------------+---------+----------------------------------------------------------------+--------------+--------+------------+
+```
