@@ -432,21 +432,40 @@
 </ol>
 <h3 id="&#x5B58;&#x50A8;&#x5F15;&#x64CE;">&#x5B58;&#x50A8;&#x5F15;&#x64CE;</h3>
 <pre><code class="lang-cmd">mysql xiang@localhost:test&gt; show engines;
-+--------------------+---------+----------------------------------------------------------------+--------------+--------+------------+
-| Engine             | Support | Comment                                                        | Transactions | XA     | Savepoints |
-+--------------------+---------+----------------------------------------------------------------+--------------+--------+------------+
-| MEMORY             | YES     | Hash based, stored <span class="hljs-keyword">in</span> memory, useful <span class="hljs-keyword">for</span> temporary tables      | NO           | NO     | NO         |
-| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO     | NO         |
-| CSV                | YES     | CSV storage engine                                             | NO           | NO     | NO         |
-| FEDERATED          | NO      | Federated MySQL storage engine                                 | &lt;null&gt;       | &lt;null&gt; | &lt;null&gt;     |
-| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO     | NO         |
-| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO     | NO         |
-| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES    | YES        |
-| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO     | NO         |
-| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO     | NO         |
-+--------------------+---------+----------------------------------------------------------------+--------------+--------+------------+
+&lt;!-- or you can <span class="hljs-keyword">call</span> select engine, support, comment from information_schema.engines; --&gt;
++--------------------+---------+----------------------------------------------------------------+
+| engine             | support | comment                                                        |
++--------------------+---------+----------------------------------------------------------------+
+| MEMORY             | YES     | Hash based, stored <span class="hljs-keyword">in</span> memory, useful <span class="hljs-keyword">for</span> temporary tables      |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          |
+| CSV                | YES     | CSV storage engine                                             |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             |
+| MyISAM             | YES     | MyISAM storage engine                                          |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) |
+| ARCHIVE            | YES     | Archive storage engine                                         |
++--------------------+---------+----------------------------------------------------------------+
 </code></pre>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="dennisl@udel.edu">dennislblog</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</i> 2020-08-15 15:08:59 </span> </footer>
+<p>&#x4E0A;&#x9762;&#x5217;&#x4E3E;&#x4E86;&#x6240;&#x6709;$9$&#x79CD;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#xFF0C;&#x4F46;&#x662F;&#x5E38;&#x7528;&#x7684;&#x662F;&#x4E09;&#x79CD;:</p>
+<ol>
+<li><p><code>Innodb</code>&#xFF1A; &#x662F;MYSQL 8.0&#x7684;&#x9ED8;&#x8BA4;&#x5F15;&#x64CE;&#xFF0C;&#x63D0;&#x4F9B;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x652F;&#x6301;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x884C;&#x7EA7;&#x9501;<sup><a href="#fn_2" id="reffn_2">2</a></sup>&#x548C;&#x5916;&#x952E;&#x652F;&#x6301;<sup><a href="#fn_3" id="reffn_3">3</a></sup>&#xFF0C;&#x7531;&#x4E8E;&#x652F;&#x6301;&#x4E8B;&#x52A1;&#x7684;&#x63D0;&#x4EA4;(commit)&#x548C;&#x56DE;&#x6EDA;(rollback)&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x7BA1;&#x662F;&#x5BF9;&#x4E8B;&#x52A1;&#x5B8C;&#x6574;&#x6027;&#x8981;&#x6C42;&#x9AD8;&#x7684;&#x94F6;&#x884C;&#x8FD8;&#x662F;&#x5BF9;&#x5E76;&#x53D1;&#x5904;&#x7406;&#x8981;&#x6C42;&#x9AD8;&#x7684;&#x552E;&#x7968;&#x90FD;&#x662F;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;</p>
+</li>
+<li><p><code>MyISAM</code>: &#x524D;&#x9762;&#x90A3;&#x4E2A;&#x7531;&#x4E8E;&#x529F;&#x80FD;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x7A7A;&#x95F4;&#x548C;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x5982;&#x679C;&#x4E3B;&#x8981;&#x662F;&#x63D2;&#x5165;&#x548C;&#x8BFB;&#x53D6;&#x8BB0;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x6548;&#x7387;&#x4F1A;&#x6BD4;&#x8F83;&#x9AD8;</p>
+</li>
+<li><p><code>Memory</code>: &#x6240;&#x6709;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x91CC;&#xFF0C;&#x6570;&#x636E;&#x5904;&#x7406;&#x901F;&#x5EA6;&#x5FEB;&#xFF0C;&#x4F46;&#x5B89;&#x5168;&#x6027;&#x4E0D;&#x9AD8;&#xFF0C;&#x4E0D;&#x80FD;&#x5EFA;&#x7ACB;&#x592A;&#x5927;&#x7684;&#x8868;(temporary table?)</p>
+</li>
+</ol>
+<blockquote id="fn_1">
+<sup>1</sup>. &#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x53D8;&#x5316;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x8F6C;&#x8D26;&#x7ED9;&#x4F60;&#xFF0C;&#x6211;&#x5C11;&#x7684;&#x94B1;&#x5C31;&#x662F;&#x4F60;&#x591A;&#x7684;&#x94B1;&#xFF0C;&#x8981;&#x4E0D;&#x90FD;&#x53D1;&#x751F;&#x8981;&#x4E0D;&#x90FD;&#x4E0D;&#x53D1;&#x751F;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. &#x9501;&#x4FDD;&#x8BC1;&#x8BBF;&#x95EE;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6B21;&#x5E8F;&#xFF0C;&#x6BD4;&#x5982;&#x9152;&#x5E97;&#x7684;&#x623F;&#x95F4;&#xFF0C;&#x53EA;&#x6709;&#x7533;&#x8BF7;&#x5230;&#x94A5;&#x5319;&#x7684;&#x4EBA;&#x624D;&#x53EF;&#x4EE5;&#x5165;&#x4F4F;&#x5E76;&#x5C06;&#x623F;&#x95F4;&#x9501;&#x8D77;&#x6765;&#xFF0C;&#x5176;&#x4ED6;&#x4EBA;&#x53EA;&#x6709;&#x7B49;&#x623F;&#x95F4;&#x7A7A;&#x51FA;&#x6765;&#x624D;&#x53EF;&#x4EE5;&#x5165;&#x4F4F;<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. &#x5728;&#x4E00;&#x4E2A;&#x8868;&#x4E2D;&#x5B58;&#x5728;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x8868;&#x7684;&#x4E3B;&#x952E;&#x79F0;&#x6B64;&#x8868;&#x7684;&#x5916;&#x952E;<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
+</blockquote>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="dennisl@udel.edu">dennislblog</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</i> 2020-08-16 03:30:13 </span> </footer>
                                 
                                 </section>
                             
@@ -489,7 +508,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"基本知识","level":"1.4.1","depth":2,"next":{"title":"未归类","level":"1.4.2","depth":2,"path":"database/wei-gui-lei.md","ref":"database/wei-gui-lei.md","articles":[]},"previous":{"title":"Database","level":"1.4","depth":1,"path":"database/README.md","ref":"database/README.md","articles":[{"title":"基本知识","level":"1.4.1","depth":2,"path":"database/ji-ben-zhi-shi.md","ref":"database/ji-ben-zhi-shi.md","articles":[]},{"title":"未归类","level":"1.4.2","depth":2,"path":"database/wei-gui-lei.md","ref":"database/wei-gui-lei.md","articles":[]},{"title":"关联查询","level":"1.4.3","depth":2,"path":"database/guan-lian-cha-xun.md","ref":"database/guan-lian-cha-xun.md","articles":[]},{"title":"数据库优化","level":"1.4.4","depth":2,"path":"database/shu-ju-ku-you-hua.md","ref":"database/shu-ju-ku-you-hua.md","articles":[]},{"title":"实际操作","level":"1.4.5","depth":2,"path":"database/shi-ji-cao-zuo.md","ref":"database/shi-ji-cao-zuo.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["click-reveal","auto-scroll-table","splitter","mathjax-pro","hints","pageview-count","back-to-top-button","hide-element","chapter-fold","code","-lunr","-search","search-pro","page-footer-ex","scripts","intopic-toc","livereload"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"chapter-fold":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"TOC in this article"},"livereload":{},"page-footer-ex":{"copyright":"[dennislblog](dennisl@udel.edu)","markdown":true,"update_label":"<i>更新时间</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"splitter":{},"scripts":{"files":["./extra.js"]},"search-pro":{},"auto-scroll-table":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"back-to-top-button":{},"pageview-count":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"mathjax":{"forceSVG":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"database/ji-ben-zhi-shi.md","mtime":"2020-08-15T07:08:59.229Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-15T07:09:03.672Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基本知识","level":"1.4.1","depth":2,"next":{"title":"未归类","level":"1.4.2","depth":2,"path":"database/wei-gui-lei.md","ref":"database/wei-gui-lei.md","articles":[]},"previous":{"title":"Database","level":"1.4","depth":1,"path":"database/README.md","ref":"database/README.md","articles":[{"title":"基本知识","level":"1.4.1","depth":2,"path":"database/ji-ben-zhi-shi.md","ref":"database/ji-ben-zhi-shi.md","articles":[]},{"title":"未归类","level":"1.4.2","depth":2,"path":"database/wei-gui-lei.md","ref":"database/wei-gui-lei.md","articles":[]},{"title":"关联查询","level":"1.4.3","depth":2,"path":"database/guan-lian-cha-xun.md","ref":"database/guan-lian-cha-xun.md","articles":[]},{"title":"数据库优化","level":"1.4.4","depth":2,"path":"database/shu-ju-ku-you-hua.md","ref":"database/shu-ju-ku-you-hua.md","articles":[]},{"title":"实际操作","level":"1.4.5","depth":2,"path":"database/shi-ji-cao-zuo.md","ref":"database/shi-ji-cao-zuo.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["click-reveal","auto-scroll-table","splitter","mathjax-pro","hints","pageview-count","back-to-top-button","hide-element","chapter-fold","code","-lunr","-search","search-pro","page-footer-ex","scripts","intopic-toc"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"chapter-fold":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"TOC in this article"},"page-footer-ex":{"copyright":"[dennislblog](dennisl@udel.edu)","markdown":true,"update_label":"<i>更新时间</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"splitter":{},"scripts":{"files":["./extra.js"]},"search-pro":{},"auto-scroll-table":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"back-to-top-button":{},"pageview-count":{},"mathjax-pro":{"forceSVG":false,"version":"2.7.7"},"mathjax":{"forceSVG":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"database/ji-ben-zhi-shi.md","mtime":"2020-08-15T19:30:13.013Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-15T19:35:22.542Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -560,10 +579,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
